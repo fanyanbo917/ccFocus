@@ -1,0 +1,26 @@
+{
+  "name": "ccfocus",
+  "version": "1.0.0",
+  "description": "模拟焦点切换插件",
+  "main": "src/index.ts",
+  "scripts": {
+    "build": "rollup -c",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fanyanbo917/ccFocus.git"
+  },
+  "author": "fanyanbo917@163.com",
+  "license": "MIT",
+  "devDependencies": {
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-typescript2": "^0.29.0",
+    "typescript": "^4.1.3"
+  },
+  "dependencies": {
+    "@types/jquery": "^3.5.5",
+    "jquery": "^3.5.1"
+  }
+}

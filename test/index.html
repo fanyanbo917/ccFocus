@@ -1,0 +1,104 @@
+<!--
+ * @Author: Kuiper
+ * @Date: 2021-03-08 16:40:19
+ * @LastEditTime: 2021-03-08 16:55:04
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style type="text/css">
+        .main>.item,
+        .sub>.item {
+            width: 120px;
+            height: 60px;
+            line-height: 60px;
+            background: rgb(151, 151, 151);
+            display: inline-block;
+            color: white;
+            text-align: center;
+            border: 1px dashed transparent;
+        }
+
+        .nav>.item {
+            width: 120px;
+            height: 60px;
+            line-height: 60px;
+            display: inline-block;
+            color: gray;
+            text-align: center;
+            font-size: 32px;
+        }
+
+        .main,
+        .sub,
+        .nav {
+            padding: 10px;
+        }
+
+        /* 默认落焦样式class名称 */
+        .btn-focus {
+            background: #fab005 !important;
+            color: #000000 !important;
+        }
+
+        /* 自定义样式class名称 */
+        .btn-focus-new {
+            background: #fab005 !important;
+            color: #000000;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 id="title">焦点切换</h1>
+
+    <div class="main" id="main">
+        <div id="f1" tabindex="-1" class="item coocaa_btn" downTarget="subf1">F1(default)</div>
+        <div id="f2" tabindex="-1" class="item coocaa_btn" downTarget="#" leftTarget="f1">F2</div>
+        <div id="f3" tabindex="-1" class="item coocaa_btn" downTarget="#" rightTarget="f4">F3</div>
+        <div id="f4" tabindex="-1" class="item coocaa_btn" downTarget="subf4" rightTarget="#">F4</div>
+    </div>
+
+    <div class="nav">
+        <div tabindex="-1" class="item">down<br />↓</div>
+        <div tabindex="-1" class="item">↖<br />up</div>
+        <div tabindex="-1" class="item">↑<br />up</div>
+        <div tabindex="-1" class="item">down<br />↓</div>
+    </div>
+
+    <div class="sub" id="sub">
+        <div id="subf1" tabindex="-1" class="item coocaa_btn" test="true" upTarget="#" rightTarget="subf2">F1</div>
+        <div id="subf2" tabindex="-1" class="item coocaa_btn" upTarget="f1" leftTarget="subf1" rightTarget="subf3">F2
+        </div>
+        <div id="subf3" tabindex="-1" class="item coocaa_btn" upTarget="f3" leftTarget="subf2" rightTarget="subf4">F3
+        </div>
+        <div id="subf4" tabindex="-1" class="item coocaa_btn" upTarget="#" leftTarget="subf3">F4</div>
+    </div>
+
+
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../dist/index-umd.js"></script>
+    <script>
+        // ccFocus.init('coocaa_btn', 'f1', 'btn-focus-new')
+        ccFocus.init('coocaa_btn', 'f1')
+
+        $('.coocaa_btn').unbind('ccClick').bind('ccClick', function () {
+            console.log('listen ccClick', $(this).attr('id'))
+        })
+
+        $('.coocaa_btn').unbind('ccFocus').bind('ccFocus', function () {
+            console.log('listen ccFocus', $(this).attr('id'))
+        })
+
+        $('.coocaa_btn').unbind('ccBlur').bind('ccBlur', function () {
+            console.log('listen ccBlur', $(this).attr('id'))
+        })
+    </script>
+</body>
+
+</html>
